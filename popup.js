@@ -17,9 +17,13 @@ document.addEventListener("DOMContentLoaded", function() {
     });
 
     function chat_with_chatbot(message) {
-      // Send a message to the API and retrieve the response
-      // You can use the existing chat_with_chatbot() function from the previous code
-      // and make necessary adjustments if needed
-    }
+        var xhr = new XMLHttpRequest();
+        xhr.open("POST", "http://localhost:5000/chatbot", false);
+        xhr.setRequestHeader("Content-Type", "application/json");
+        xhr.send(JSON.stringify({ conversation: message }));
+        var response = JSON.parse(xhr.responseText);
+        return response.response;
+      }
+      
   });
  
